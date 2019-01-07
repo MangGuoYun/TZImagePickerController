@@ -390,7 +390,7 @@
         photoPickerVc.columnNumber = self.columnNumber;
         [[TZImageManager manager] getCameraRollAlbum:self.allowPickingVideo allowPickingImage:self.allowPickingImage needFetchAssets:NO completion:^(TZAlbumModel *model) {
             photoPickerVc.model = model;
-            [self pushViewController:photoPickerVc animated:YES];
+            [self pushViewController:photoPickerVc animated:NO];
             self->_didPushPhotoPickerVc = YES;
         }];
     }
