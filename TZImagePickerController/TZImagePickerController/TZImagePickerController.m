@@ -409,44 +409,44 @@
 }
 
 - (void)showProgressHUD {
-    if (!_progressHUD) {
-        _progressHUD = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_progressHUD setBackgroundColor:[UIColor clearColor]];
-        
-        _HUDContainer = [[UIView alloc] init];
-        _HUDContainer.layer.cornerRadius = 8;
-        _HUDContainer.clipsToBounds = YES;
-        _HUDContainer.backgroundColor = [UIColor darkGrayColor];
-        _HUDContainer.alpha = 0.7;
-        
-        _HUDIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        
-        _HUDLabel = [[UILabel alloc] init];
-        _HUDLabel.textAlignment = NSTextAlignmentCenter;
-        _HUDLabel.text = self.processHintStr;
-        _HUDLabel.font = [UIFont systemFontOfSize:15];
-        _HUDLabel.textColor = [UIColor whiteColor];
-        
-        [_HUDContainer addSubview:_HUDLabel];
-        [_HUDContainer addSubview:_HUDIndicatorView];
-        [_progressHUD addSubview:_HUDContainer];
-    }
-    [_HUDIndicatorView startAnimating];
-    UIWindow *applicationWindow;
-    if ([[[UIApplication sharedApplication] delegate] respondsToSelector:@selector(window)]) {
-        applicationWindow = [[[UIApplication sharedApplication] delegate] window];
-    } else {
-        applicationWindow = [[UIApplication sharedApplication] keyWindow];
-    }
-    [applicationWindow addSubview:_progressHUD];
-    [self.view setNeedsLayout];
-    
-    // if over time, dismiss HUD automatic
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.timeout * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf hideProgressHUD];
-    });
+//    if (!_progressHUD) {
+//        _progressHUD = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [_progressHUD setBackgroundColor:[UIColor clearColor]];
+//
+//        _HUDContainer = [[UIView alloc] init];
+//        _HUDContainer.layer.cornerRadius = 8;
+//        _HUDContainer.clipsToBounds = YES;
+//        _HUDContainer.backgroundColor = [UIColor darkGrayColor];
+//        _HUDContainer.alpha = 0.7;
+//
+//        _HUDIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+//
+//        _HUDLabel = [[UILabel alloc] init];
+//        _HUDLabel.textAlignment = NSTextAlignmentCenter;
+//        _HUDLabel.text = self.processHintStr;
+//        _HUDLabel.font = [UIFont systemFontOfSize:15];
+//        _HUDLabel.textColor = [UIColor whiteColor];
+//
+//        [_HUDContainer addSubview:_HUDLabel];
+//        [_HUDContainer addSubview:_HUDIndicatorView];
+//        [_progressHUD addSubview:_HUDContainer];
+//    }
+//    [_HUDIndicatorView startAnimating];
+//    UIWindow *applicationWindow;
+//    if ([[[UIApplication sharedApplication] delegate] respondsToSelector:@selector(window)]) {
+//        applicationWindow = [[[UIApplication sharedApplication] delegate] window];
+//    } else {
+//        applicationWindow = [[UIApplication sharedApplication] keyWindow];
+//    }
+//    [applicationWindow addSubview:_progressHUD];
+//    [self.view setNeedsLayout];
+//
+//    // if over time, dismiss HUD automatic
+//    __weak typeof(self) weakSelf = self;
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.timeout * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        __strong typeof(weakSelf) strongSelf = weakSelf;
+//        [strongSelf hideProgressHUD];
+//    });
 }
 
 - (void)hideProgressHUD {
